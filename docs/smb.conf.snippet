@@ -1,0 +1,46 @@
+# ==============================================================================
+# Samba share configuration for the 5TB backup HDD
+# ==============================================================================
+# This is a SNIPPET, not a full smb.conf. Append this block to the bottom of
+# your existing /etc/samba/smb.conf (back up the original first):
+#
+#   sudo cp /etc/samba/smb.conf /etc/samba/smb.conf.bak
+#   sudo nano /etc/samba/smb.conf
+#   (paste the block below at the end of the file)
+#   testparm                          <- validates syntax before restarting
+#   sudo systemctl restart smbd
+#
+# Place this reference file at: docs/reference/smb.conf.snippet (not loaded
+# directly -- it's documentation, not a live config file)
+# ==============================================================================
+
+[NetworkBackup]
+   comment = 5TB Backup Drive
+   path = /mnt/backup/network
+   valid users = backupuser
+   read only = no
+   browseable = yes
+   create mask = 0660
+   directory mask = 0770
+   force user = backupuser
+
+# ------------------------------------------------------------------------------
+# Security note on global Samba settings:
+#
+# If your [global] section has these two lines (common in default Ubuntu
+# Samba installs):
+#
+#   map to guest = Bad User
+#   usershare allow guests = Yes
+#
+# ...this means Samba will allow GUEST (unauthenticated) access on any share
+# that doesn't explicitly restrict it with "valid users". The [NetworkBackup]
+# share above is correctly locked down with "valid users = backupuser", so it
+# is NOT exposed -- but if you add additional shares later without setting
+# "valid users" explicitly, those defaults would make them guest-accessible.
+#
+# This was identified during review and is documented here as an accepted
+# risk / design decision rather than a fixed bug, since the specific share
+# in this lab is not affected. Tightening these two global defaults is a
+# reasonable hardening step if you add more shares in the future.
+# ------------------------------------------------------------------------------
