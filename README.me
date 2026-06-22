@@ -1,0 +1,101 @@
+![Status](https://img.shields.io/badge/status-active-success)
+![Platform](https://img.shields.io/badge/platform-Ubuntu%20Server%2022.04-orange)
+![Cost](https://img.shields.io/badge/software%20cost-%240.00-brightgreen)
+![Security+](https://img.shields.io/badge/maps%20to-Security%2B%20SY0--701-blue)
+
+# 3-2-1 Backup & Recovery Homelab
+
+A complete enterprise-style 3-2-1 backup strategy built on a home Ubuntu Server using a 5TB external HDD and LAN network shares. Every tool used is free and open source — total software cost is $0.
+
+This lab is part of an ongoing homelab portfolio focused on hands-on SOC analyst / defensive security skills, documented for [CompTIA Security+ SY0-701](https://www.comptia.org/certifications/security) study and GitHub/LinkedIn visibility.
+
+## Why this lab
+
+Backup and recovery is a core Security+ Domain 4 (Security Operations) topic, and it's one of the few security controls every organization — from a homelab to an enterprise — actually has to operate, not just configure once. Most "backup" tutorials stop at `rsync -av source dest`. This lab goes further: encryption at rest, automated scheduling, retention policies, integrity verification, a tested restore, and SIEM alerting on failure — the full lifecycle a SOC analyst would actually be responsible for monitoring.
+
+## Architecture
+
+```
+┌─────────────────────┐
+│   Ubuntu Server       │  Source: /home/[user]
+│   (homelab)           │
+└──────────┬────────────┘
+           │
+           ├─────────────► Copy 2 (Local): 5TB USB HDD at /mnt/backup
+           │                 ├── rsync incremental sync (daily, 2 AM)
+           │                 └── Restic AES-256 encrypted snapshots (daily, 3 AM)
+           │
+           └─────────────► Copy 3 (Network): Samba SMB share
+                             └── Accessible to other LAN devices for offsite-style copy
+
+Wazuh SIEM agent monitors backup logs → custom rules alert on FAILURE events
+```
+
+**The 3-2-1 rule applied:**
+- **3 copies:** original data + local HDD copy + network share copy
+- **2 media types:** internal server disk + external USB HDD
+- **1 offsite-equivalent:** Samba network share, reachable by any other device on the LAN
+
+## Technologies used
+
+| Tool | Purpose | Cost |
+|---|---|---|
+| rsync | Incremental delta backups, scheduled via cron | Free |
+| cron | Linux task scheduler for automated daily backups | Free |
+| Samba | SMB/CIFS network share for LAN-based backup access | Free |
+| Restic | AES-256-CTR encrypted, deduplicated snapshot backups | Free |
+| Wazuh SIEM | Custom rules monitoring backup success/failure events | Free (already deployed) |
+
+## What's in this repo
+
+```
+backup-lab/
+├── README.md                          this file
+├── .gitignore
+├── .env.example                       placeholder for paths/credentials, never commit real values
+├── setup.sh                           one-shot setup script with fixes baked in
+├── docs/
+│   ├── PHASE1-mount-hdd.md            mounting and fstab configuration
+│   ├── PHASE2-rsync-cron.md           incremental backup + scheduling
+│   ├── PHASE3-samba-share.md          network share configuration
+│   ├── PHASE4-restic-encryption.md    encrypted snapshots + retention policy
+│   ├── PHASE5-verify-restore.md       integrity checks + tested restore
+│   ├── PHASE6-wazuh-integration.md    SIEM alerting on backup failure
+│   └── INCIDENT-REPORT.md             real deployment issues hit and how they were fixed
+└── screenshots/                       redacted screenshots referenced in the docs above
+```
+
+## Security controls implemented
+
+- Dedicated least-privilege Samba user (`backupuser`, no login shell, no SSH access)
+- Password-protected Restic repository, password file locked to `600` permissions
+- ext4 filesystem with standard Unix permission enforcement on the backup volume
+- Weekly automated integrity verification (`restic check`)
+- SIEM alerting on backup failure via custom Wazuh rules (rule ID 100200, level 7)
+- A tested, verified restore — not just a backup that's assumed to work
+
+## Recovery objectives
+
+- **RPO (Recovery Point Objective):** 24 hours — backups run nightly via cron
+- **RTO (Recovery Time Objective):** under 1 hour — verified via a real restore test in [docs/PHASE5-verify-restore.md](docs/PHASE5-verify-restore.md)
+
+## Security+ SY0-701 mappings
+
+| Domain | Concept demonstrated |
+|---|---|
+| 4.0 Security Operations | Backup procedures, data availability, recovery testing |
+| 4.0 Security Operations | RPO/RTO definition and validation |
+| 2.0 Threats, Vulnerabilities, Mitigations | Encryption at rest (AES-256 via Restic) |
+| 4.0 Security Operations | SIEM-based monitoring and alerting on operational failures |
+
+## Lessons learned
+
+See [docs/INCIDENT-REPORT.md](docs/INCIDENT-REPORT.md) for the real troubleshooting history on this build — including a root-owned Docker volume blocking rsync, a Restic password file permissions mismatch that silently broke automated backups, and a Wazuh agent event-queue flood caused by an overly broad log wildcard. These are documented as deliberate evidence of practical troubleshooting, not hidden as failures.
+
+## Status
+
+Server-side backup lab (HDD mount → rsync → Samba → Restic → verify → Wazuh alerting) is complete and tested end-to-end. Windows client-side automated backup (Task Scheduler + robocopy pushing to the Samba share) is in progress and will be documented separately once verified.
+
+## Related labs
+
+This lab builds on infrastructure from other labs in this portfolio: the Wazuh SIEM + Windows endpoint lab (for the alerting integration) and the secure home network lab (for the underlying Ubuntu Server environment).
