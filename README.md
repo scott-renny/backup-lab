@@ -1,13 +1,15 @@
 # 💾 Backup Lab
 
+## Linux Backup Automation with rsync
+
 > [!IMPORTANT]
-> ## 📦 Legacy Portfolio Project
+> ### 📦 Legacy Portfolio Project
 >
-> This repository is part of my **Legacy Project Archive** and represents an earlier stage in my infrastructure engineering journey.
+> This repository documents one of the first major infrastructure engineering projects I completed while developing my home lab.
 >
-> It has been intentionally preserved to document my technical growth and should be viewed as a historical milestone rather than my current engineering standard.
+> Rather than deleting or replacing it, I have intentionally preserved it as part of my **Legacy Project Archive** to document my growth as an infrastructure and cybersecurity engineer.
 >
-> The knowledge and experience gained from this project directly influenced the design, documentation, and engineering practices used throughout my current portfolio.
+> The engineering concepts, troubleshooting experience, and documentation practices developed during this project directly influenced the design and organization of my current engineering portfolio.
 >
 > My current engineering efforts are focused on:
 >
@@ -16,10 +18,10 @@
 > - 🐉 Project Hydra — Workstation Engineering
 > - 🏛️ Project Olympus — Network Engineering
 > - 🔥 Project Hestia — Self-Hosted Media Infrastructure
+>
+> Repository links will be added as these projects are completed.
 
 ---
-
-### Linux Backup Automation with rsync
 
 ![Status](https://img.shields.io/badge/Status-Legacy_Project-6f42c1)
 ![Platform](https://img.shields.io/badge/Platform-Ubuntu-E95420)
@@ -30,37 +32,25 @@
 
 # Project Overview
 
-The **Backup Lab** was one of my earliest infrastructure engineering projects, created to learn Linux administration, Bash scripting, and automated backup strategies using **rsync**.
+The **Backup Lab** was created to explore Linux system administration and build a reliable backup solution using open-source technologies.
 
-The primary objective was to build a reliable and repeatable backup solution while gaining practical experience with Linux system administration, infrastructure automation, and disaster recovery concepts.
+What began as a simple backup automation exercise evolved into a multi-phase infrastructure project covering storage configuration, automated backups, network file sharing, encrypted backup repositories, restore validation, monitoring, and incident documentation.
 
-Although this repository is now part of my **Legacy Project Archive**, it remains an important milestone in my engineering journey and documents the foundation upon which my current projects have been built.
-
----
-
-# Objectives
-
-- Learn Linux administration
-- Build automated backup workflows
-- Learn Bash scripting fundamentals
-- Configure rsync for efficient synchronization
-- Understand backup strategies
-- Explore disaster recovery concepts
-- Practice documenting infrastructure projects
+Today, this repository serves as a historical snapshot of my engineering progression and the foundation upon which many of my current infrastructure projects have been built.
 
 ---
 
-# Skills Demonstrated
+# Project Objectives
 
-- Linux Administration
-- Bash Scripting
-- rsync
-- Backup Automation
-- Disaster Recovery
-- File Permissions
-- Directory Synchronization
-- Infrastructure Documentation
-- Automation
+- Learn Linux system administration
+- Configure persistent storage
+- Automate backups using rsync
+- Schedule recurring jobs with Cron
+- Configure Samba network shares
+- Implement encrypted backups with Restic
+- Verify backup restoration procedures
+- Integrate monitoring using Wazuh
+- Practice documentation and incident reporting
 
 ---
 
@@ -69,9 +59,27 @@ Although this repository is now part of my **Legacy Project Archive**, it remain
 - Ubuntu Linux
 - Bash
 - rsync
-- SSH
 - Cron
-- Linux Command Line
+- Samba
+- Restic
+- Wazuh
+- SSH
+
+---
+
+# Skills Demonstrated
+
+- Linux Administration
+- Infrastructure Engineering
+- Bash Scripting
+- Backup Automation
+- Disaster Recovery
+- Encryption
+- Network File Sharing
+- Security Monitoring
+- Incident Response
+- Technical Documentation
+- Troubleshooting
 
 ---
 
@@ -81,78 +89,100 @@ Although this repository is now part of my **Legacy Project Archive**, it remain
 backup-lab/
 │
 ├── docs/
-│   └── Project documentation
+│   ├── PHASE1-mount-hdd.md
+│   ├── PHASE2-rsync-cron.md
+│   ├── PHASE3-samba-share.md
+│   ├── PHASE4-restic-encryption.md
+│   ├── PHASE5-verify-restore.md
+│   ├── PHASE6-wazuh-integration.md
+│   ├── INCIDENT-REPORT.md
+│   └── smb.conf.snippet
 │
 ├── screenshots/
-│   └── Lab screenshots
 │
 ├── backup_rsync.sh
-│   └── Backup automation script
-│
 ├── setup.sh
-│   └── Initial setup script
-│
 └── README.md
 ```
 
 ---
 
+# Implementation Phases
+
+This project is documented through six implementation phases.
+
+1. HDD Mount & Storage Configuration
+2. rsync Backup Automation & Cron Scheduling
+3. Samba Network Share Configuration
+4. Restic Encrypted Backups
+5. Backup Verification & Restore Testing
+6. Wazuh Monitoring & Security Integration
+
+Each phase includes implementation notes, screenshots, troubleshooting steps, incident response documentation, and lessons learned.
+
+---
+
 # Features
 
-- Automated backups using rsync
-- Incremental file synchronization
-- Linux shell automation
-- Simple deployment
-- Customizable backup scripts
-- Supporting documentation
-
----
-
-# Learning Outcomes
-
-This project strengthened my understanding of:
-
-- Linux command-line operations
-- Bash scripting
-- Backup automation
-- Disaster recovery planning
-- Infrastructure documentation
-- Linux filesystem management
-- Automation fundamentals
-
-More importantly, this project taught me the importance of creating repeatable processes, documenting infrastructure, and building solutions that can be maintained over time.
-
----
-
-# Screenshots
-
-Screenshots demonstrating the lab environment can be found in the **screenshots/** directory.
+- Automated Linux backups
+- Incremental synchronization using rsync
+- Scheduled Cron jobs
+- Samba network file sharing
+- Encrypted Restic backups
+- Snapshot retention policies
+- Backup verification
+- Wazuh monitoring integration
+- Comprehensive project documentation
+- Incident Response documentation
 
 ---
 
 # Documentation
 
-Additional setup notes and supporting documentation are located in the **docs/** directory.
+The **docs/** directory contains detailed documentation for every implementation phase.
+
+Each phase includes:
+
+- Objectives
+- Configuration steps
+- Commands used
+- Screenshots
+- Troubleshooting
+- Incident Response documentation
+- Lessons learned
 
 ---
 
-# Why This Project Became Legacy
+# Screenshots
 
-Every engineering project contributes to the next.
-
-This project successfully achieved its original learning objectives and provided the practical experience needed to build more advanced infrastructure and cybersecurity projects.
-
-Rather than deleting or replacing this repository, I chose to preserve it as part of my **Legacy Project Archive** to provide a transparent record of my growth as an engineer.
-
-Keeping earlier work available demonstrates not only what I can build today, but also how my approach to planning, implementation, documentation, automation, and problem solving has evolved over time.
+Screenshots documenting each phase of the project are available in the **screenshots/** directory.
 
 ---
 
-# Legacy Project Archive
+# Learning Outcomes
 
-This repository is one of several historical projects maintained within my **Legacy Project Archive**.
+This project provided practical experience with:
 
-The archive exists to preserve earlier work while documenting the progression of my engineering skills and the evolution of my portfolio.
+- Linux infrastructure
+- Backup automation
+- Disaster recovery
+- Encryption
+- Monitoring and alerting
+- Infrastructure troubleshooting
+- Incident documentation
+- Technical documentation
+
+More importantly, it established many of the engineering and documentation practices that continue throughout my current portfolio.
+
+---
+
+# Why This Project Is Part of My Legacy Portfolio
+
+This repository successfully achieved its original learning objectives and became the foundation for more advanced infrastructure and cybersecurity projects.
+
+Rather than deleting earlier work, I intentionally preserve projects like this to demonstrate continuous learning and the evolution of my engineering practices.
+
+My Legacy Project Archive exists to show not only what I can build today, but also how my approach to planning, implementation, documentation, and problem solving has matured over time.
 
 ---
 
@@ -160,13 +190,13 @@ The archive exists to preserve earlier work while documenting the progression of
 
 My active engineering work now centers on:
 
-- 🛡️ Cyber Operations Center Engineering Program
+- 🛡️ Cyber Operations Center Engineering Program *(Flagship Project)*
 - 🏗️ Project Atlas
 - 🐉 Project Hydra
 - 🏛️ Project Olympus
 - 🔥 Project Hestia
 
-These projects reflect my current engineering standards, documentation practices, and long-term portfolio direction.
+These projects represent my current engineering standards, documentation practices, and long-term portfolio direction.
 
 ---
 
