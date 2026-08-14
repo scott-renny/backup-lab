@@ -15,9 +15,11 @@
 >
 > - 🛡️ Cyber Operations Center Engineering Program *(Flagship Project)*
 > - 🏗️ Project Atlas — Infrastructure Engineering
-> - 🐉 Project Hydra — Workstation Engineering
-> - 🏛️ Project Olympus — Network Engineering
-> - 🔥 Project Hestia — Self-Hosted Media Infrastructure
+> - 📡 [NET-WATCH](https://github.com/scott-renny/netwatch)
+> - 🪖 [Project Hermes](https://github.com/scott-renny/project-hermes)
+> - 🐺 [Project Cerberus](https://github.com/scott-renny/project-cerberus-build)
+> - ⚔️ [Project Ares](https://github.com/scott-renny/project_ares)
+> - ☀️ [Project Apollo](https://github.com/scott-renny/project-apollo)
 >
 > Repository links will be added as these projects are completed.
 
@@ -192,9 +194,11 @@ My active engineering work now centers on:
 
 - 🛡️ Cyber Operations Center Engineering Program *(Flagship Project)*
 - 🏗️ Project Atlas
-- 🐉 Project Hydra
-- 🏛️ Project Olympus
-- 🔥 Project Hestia
+- 📡 [NET-WATCH](https://github.com/scott-renny/netwatch)
+- 🪖 [Project Hermes](https://github.com/scott-renny/project-hermes)
+- 🐺 [Project Cerberus](https://github.com/scott-renny/project-cerberus-build)
+- ⚔️ [Project Ares](https://github.com/scott-renny/project_ares)
+- ☀️ [Project Apollo](https://github.com/scott-renny/project-apollo)
 
 These projects represent my current engineering standards, documentation practices, and long-term portfolio direction.
 
@@ -210,6 +214,6 @@ This project is released under the MIT License.
 
 ## Scott Renny
 
-**Aspiring SOC Analyst • Infrastructure Engineer • Home Lab Builder**
+**Security+ Certified • Cybersecurity and Infrastructure Engineering**
 
 *"Building enterprise infrastructure one project at a time while continuously learning, improving, and documenting the journey."*
