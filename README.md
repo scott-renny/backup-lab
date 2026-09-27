@@ -20,8 +20,6 @@
 > - 🐺 [Project Cerberus](https://github.com/scott-renny/project-cerberus-build)
 > - ⚔️ [Project Ares](https://github.com/scott-renny/project_ares)
 > - ☀️ [Project Apollo](https://github.com/scott-renny/project-apollo)
->
-> Repository links will be added as these projects are completed.
 
 ---
 
