@@ -107,6 +107,12 @@ backup-lab/
 
 ---
 
+# Architecture
+
+How storage, the rsync mirror, encrypted Restic snapshots, the Samba share and Wazuh monitoring fit together is in [ARCHITECTURE.md](ARCHITECTURE.md).
+
+---
+
 # Implementation Phases
 
 This project is documented through six implementation phases.
