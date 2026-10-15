@@ -1,4 +1,18 @@
-# 💾 Backup Lab
+<div align="center">
+
+# Backup Lab
+### Linux Backups · Restore Validation · Automation
+
+![status: legacy project](https://img.shields.io/badge/status-legacy%20project-64748b?style=flat-square)
+![automation: Bash](https://img.shields.io/badge/automation-Bash-22d3ee?style=flat-square)
+
+[Architecture](ARCHITECTURE.md) · [License](LICENSE)
+
+</div>
+
+[Linux Backup Automation with rsync](#linux-backup-automation-with-rsync) · [Project Overview](#project-overview) · [Project Objectives](#project-objectives) · [Technologies Used](#technologies-used) · [Skills Demonstrated](#skills-demonstrated) · [Repository Structure](#repository-structure)
+
+---
 
 ## Linux Backup Automation with rsync
 
@@ -23,10 +37,6 @@
 
 ---
 
-![Status](https://img.shields.io/badge/Status-Legacy_Project-6f42c1)
-![Platform](https://img.shields.io/badge/Platform-Ubuntu-E95420)
-![Language](https://img.shields.io/badge/Language-Bash-4EAA25)
-![Portfolio](https://img.shields.io/badge/Portfolio-Historical_Project-blue)
 
 ---
 
